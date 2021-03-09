@@ -1,6 +1,6 @@
 #region INPUT MANAGEMENT
 
-    #macro ANALOGUE_THRESHOLD 0.9
+    #macro ANALOGUE_THRESHOLD 0.1
     #macro LONG_PRESS_TIME 500
     #macro DOUBLE_TAP_TIME 300
     #macro REPEATED_TIME 300
@@ -1307,22 +1307,37 @@
     AddKey("MenuOpen", KEY.M);
     
     // GamerMode configuration
-    SetConfiguration("GamerMode");
+    SetConfiguration("Camera");
     
-    AddInstance("Up", 0.5);
+    AddInstance("Up");
     AddInstance("Down");
     AddInstance("Left");
     AddInstance("Right");
+    AddInstance("Above");
+    AddInstance("Below");
+    AddInstance("ViewUp");
+    AddInstance("ViewDown");
+    AddInstance("ViewLeft");
+    AddInstance("ViewRight");
     
     AddKey("Up", KEY.W);
     AddKey("Down", KEY.S);
     AddKey("Left", KEY.A);
     AddKey("Right", KEY.D);
+    AddKey("Above", KEY.E);
+    AddKey("Below", KEY.Q);
     
     AddKey("Up", KEY.LEFT_JOYSTICK_UP);
     AddKey("Down", KEY.LEFT_JOYSTICK_DOWN);
     AddKey("Left", KEY.LEFT_JOYSTICK_LEFT);
     AddKey("Right", KEY.LEFT_JOYSTICK_RIGHT);
+    AddKey("Above", KEY.RIGHT_TRIGGER);
+    AddKey("Below", KEY.LEFT_TRIGGER);
+    
+    AddKey("ViewUp", KEY.RIGHT_JOYSTICK_UP);
+    AddKey("ViewDown", KEY.RIGHT_JOYSTICK_DOWN);
+    AddKey("ViewLeft", KEY.RIGHT_JOYSTICK_LEFT);
+    AddKey("ViewRight", KEY.RIGHT_JOYSTICK_RIGHT);
     
     // Save all the profiles
     Save();
