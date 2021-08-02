@@ -1,3 +1,5 @@
+image_alpha = 0;
+
 #region INPUT MANAGEMENT
 
     #macro ANALOGUE_THRESHOLD 0.1
@@ -548,7 +550,7 @@
         		self.device = ( device != undefined ) ? device : 0;
         		self.keyCode = Input.KeyTrueCode(self.key);
         		self.origin = undefined;
-        		self.Check = undefined;
+        		self.Check = InputCallbackDefault;
         		
         		// GET INPUT ORIGIN
         		if ( self.key < KEY.A ) self.origin = "SPECIAL";

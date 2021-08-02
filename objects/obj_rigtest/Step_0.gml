@@ -1,0 +1,2 @@
+
+model.skeleton.Update();

@@ -1,15 +1,24 @@
 
+image_alpha = 0;
 // The port struct keeps all the properties and methods
 // of everything related to displaying the game in the
 // different platforms. Here we change the resolution,
 // the parameters of the window, etc...
 port = {
 	// Properties
+	/* 
+    width : 1920,
+    height : 1080,
+    fullscreen : true,
+    
+    /*/ 
     width : 1280,
     height : 720,
-    aspect : 1,
+    fullscreen : false,
+    //*/
     
     // Variables
+    aspect : 1,
     center : false,
     
     // Update the canvas every step
@@ -30,6 +39,10 @@ port = {
                 surface_resize(application_surface, width, height);
                 center = true;
             }
+            
+            if (window_get_fullscreen() != fullscreen) {
+            	window_set_fullscreen(fullscreen);
+            }
         }
         
         // Resizing the browser canvas
@@ -49,9 +62,9 @@ port = {
 /// rotation, scaling, etc...
 view = {
 	// Properties
-    x : METER,
-    y : METER,
-    z : METER,
+    x :  4,
+    y : 1,
+    z : 4,
     width : 480,
     height : 270,
     aspect : 1,
@@ -82,11 +95,11 @@ view = {
         
         var lookMat, projMat;
         if (!enablePerspective) {
-	        lookMat = matrix_build_lookat(x, y, z, x, y, z + 1, 0, -METER, 0);
+	        lookMat = matrix_build_lookat(x, y, z, x, y, z + 1, 0, -1, 0);
 	        projMat = matrix_build_projection_ortho(-fixedWidth * scale, -fixedHeight * scale, 0.001, 10000);
         } else {
         	lookMat = matrix_build_lookat(x, y, z, xto, yto, zto, 0, 1, 0);
-			projMat = matrix_build_projection_perspective_fov(-fov, -aspect, 0.001, 10000);
+			projMat = matrix_build_projection_perspective_fov(-fov, -aspect, 0.01, 10000);
         }
         camera_set_view_mat(cam, lookMat);
         camera_set_proj_mat(cam, projMat);
@@ -94,16 +107,21 @@ view = {
     }
 };
 
-game_set_speed(60, gamespeed_fps);
-gpu_set_texfilter(false);
-
 // Move the camera
-look_dir = 225;
+look_dir = 180;
 look_pitch = 0;
-maxSpd = 2.5;
+maxSpd = 0.25;
 acceleration = 0.1;
 mouseSensitivity = 0.08;
 gamepadSensitivity = 2.5;
+browserSensitivity = 0.16;
 sideSpd = 0 ;
 frontalSpd = 0;
 verticalSpd = 0;
+
+prevX = display_mouse_get_x();
+prevY = display_mouse_get_y();
+
+mode = "Free";
+dist = 1;
+targd = 3;

@@ -1,0 +1,10 @@
+Para ejecutar la demo técnica:
+1.	Abra la carpeta /bin
+2.	Ejecute el archivo vendaval.exe
+
+Controles:
+Alternar entre escenarios - Espacio
+Rotar cámara - Ratón
+Zoom - Rueda
+Desplazamiendo - WASD QE
+Salir del juego - Exit
